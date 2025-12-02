@@ -11,9 +11,9 @@ The charts below show the price sensitivity curves for two different scenarios. 
 ![Discounted Snickers](charts/01_snickers.png)
 
 - **Product price:** $0.99 (1% below reference)
-- **WTP (Willingness to Pay):** $1.00 (based on value perception)
+- **WTP (Willingness to Pay):** Based on value perception
 - **Tolerance band:** Purple shaded region (±5% around WTP)
-- **Result:** Score ~50 - price falls within tolerance band, perceived as neutral/fair
+- **Result:** Score ~85.3 - good price relative to perceived value
 - **Key lines:**
   - Green dashed: Reference price (median of historical prices)
   - Orange dashed: WTP (what customer is willing to pay based on product value)
@@ -24,9 +24,9 @@ The charts below show the price sensitivity curves for two different scenarios. 
 ![Premium Snickers](charts/02_snickers.png)
 
 - **Product price:** $1.20 (20% above reference)
-- **WTP:** $1.00 (same product value as Example 1)
+- **WTP:** Based on value perception
 - **Tolerance band:** ±5% around WTP
-- **Result:** Score ~21.0 - price exceeds tolerance band, triggering **loss aversion**
+- **Result:** Score ~50.0 - price falls within tolerance band, perceived as neutral
 - **Key observation:** Note the steeper drop on the right side of the curve compared to the left - this asymmetry demonstrates loss aversion (overpricing hurts 2× more than discounts feel good)
 
 ### What These Charts Show
