@@ -154,7 +154,7 @@ class Customer:
         if chart:
             from plotting import plot_customer_position
 
-            plot_customer_position(self, product, final_score, ref, wtp, value)
+            plot_customer_position(self, product, final_score, ref, wtp, value, rel_uncert)
 
         return final_score
 
@@ -166,15 +166,20 @@ if __name__ == "__main__":
     clear_charts_folder()
 
     # Test the chart generation
-    ref_product = Product(price=1, sku="snickers", category=1, features=[5, 5, 5])
+    # Add multiple reference prices to create meaningful uncertainty
+    ref_product_1 = Product(price=0.95, sku="snickers", category=1, features=[5, 5, 5])
+    ref_product_2 = Product(price=1.00, sku="snickers", category=1, features=[5, 5, 5])
+    ref_product_3 = Product(price=1.05, sku="snickers", category=1, features=[5, 5, 5])
 
     customer = Customer(preferences=[3, 6, 8], max_distance=27, price_sensitivty=1.0)
-    customer.append_memory(ref_product)
+    customer.append_memory(ref_product_1)
+    customer.append_memory(ref_product_2)
+    customer.append_memory(ref_product_3)
 
     test_product_1 = Product(price=0.99, sku="snickers", category=1, features=[5, 5, 5])
     test_product_2 = Product(price=1.20, sku="snickers", category=1, features=[5, 5, 5])
 
-    score_1 = customer.eval_product(test_product_1, chart=True, update_mem=True)
+    score_1 = customer.eval_product(test_product_1, chart=True, update_mem=False)
     print(f"Score: {score_1:.2f}")
 
     score_2 = customer.eval_product(test_product_2, chart=True, update_mem=False)

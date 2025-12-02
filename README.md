@@ -4,31 +4,40 @@ A behavioral economics model that simulates customer decision-making when evalua
 
 ## Example Visualizations
 
-The charts below show the price sensitivity curves for two different scenarios with the same customer and reference price:
+The charts below show the price sensitivity curves for two different scenarios. The customer has seen three historical prices: $0.95, $1.00, and $1.05 (median = $1.00, MAD ≈ 5%).
 
 ### Example 1: Discounted Price ($0.99 vs $1.00 reference)
 
 ![Discounted Snickers](charts/01_snickers.png)
 
-- Product priced at $0.99 (1% below reference)
-- Falls within the **tolerance band** due to uncertainty
-- Results in a high score (~95) as price is perceived as fair
-- Green line shows reference price, orange shows WTP
+- **Product price:** $0.99 (1% below reference)
+- **WTP (Willingness to Pay):** $1.00 (based on value perception)
+- **Tolerance band:** Purple shaded region (±5% around WTP)
+- **Result:** Score ~50 - price falls within tolerance band, perceived as neutral/fair
+- **Key lines:**
+  - Green dashed: Reference price (median of historical prices)
+  - Orange dashed: WTP (what customer is willing to pay based on product value)
+  - Purple shaded: Tolerance band (prices within this zone feel "about the same")
 
 ### Example 2: Premium Price ($1.20 vs $1.00 reference)
 
 ![Premium Snickers](charts/02_snickers.png)
 
-- Product priced at $1.20 (20% above reference)
-- Exceeds tolerance band, triggering **loss aversion**
-- Results in lower score (~89) due to overpricing penalty
-- Note the steeper drop on the right side of the curve (loss aversion effect)
+- **Product price:** $1.20 (20% above reference)
+- **WTP:** $1.00 (same product value as Example 1)
+- **Tolerance band:** ±5% around WTP
+- **Result:** Score ~21.0 - price exceeds tolerance band, triggering **loss aversion**
+- **Key observation:** Note the steeper drop on the right side of the curve compared to the left - this asymmetry demonstrates loss aversion (overpricing hurts 2× more than discounts feel good)
+
+### What These Charts Show
 
 Both examples demonstrate:
-- **S-shaped curve** from sigmoid transformation
-- **Asymmetric response** - steeper decline for overpricing than rise for discounts
-- **Reference price anchoring** - scores relative to $1.00 reference
-- **Tolerance band** - small price variations near reference have minimal impact
+- **S-shaped curve** from sigmoid transformation - realistic customer response
+- **Asymmetric response** - the curve drops more steeply for overpricing (right side) than it rises for discounts (left side)
+- **Reference price anchoring** (green line) - customer expectations based on past prices
+- **WTP calculation** (orange line) - adjusts based on perceived product value
+- **Tolerance band** (purple shading) - price differences within ~5% of WTP are perceived as negligible
+- **Loss aversion** - prices outside the tolerance band on the high side cause dramatic score drops
 
 ## Psychological Features Modeled
 

@@ -14,7 +14,7 @@ def clear_charts_folder():
     print("Charts folder cleared")
 
 
-def plot_customer_position(customer, product, current_score, ref_price, wtp, value):
+def plot_customer_position(customer, product, current_score, ref_price, wtp, value, rel_uncert):
     """
     Generate a chart showing customer position on pricing curve.
     Called from the score function when chart=True.
@@ -89,6 +89,18 @@ def plot_customer_position(customer, product, current_score, ref_price, wtp, val
         label=f"WTP: ${wtp:.0f}",
         alpha=0.7,
         linewidth=2,
+    )
+
+    # Add tolerance band around WTP (shaded region)
+    tolerance_abs = wtp * rel_uncert
+    tolerance_band_lower = wtp - tolerance_abs
+    tolerance_band_upper = wtp + tolerance_abs
+    plt.axvspan(
+        tolerance_band_lower,
+        tolerance_band_upper,
+        alpha=0.15,
+        color="purple",
+        label=f"Tolerance Band (±{rel_uncert*100:.1f}%)",
     )
 
     # Add neutral score line
